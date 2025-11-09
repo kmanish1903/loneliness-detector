@@ -125,4 +125,4 @@ This application is for informational and wellness purposes only. It is not a su
 
 ---
 
-**Live Demo**: https://calm-mind-builder.vercel.app
+**Live Demo**: (https://mentalhealth-delta.vercel.app/)
