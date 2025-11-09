@@ -1,8 +1,12 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "mindcare-ai",
+  "description": "AI-powered mental health support with mood tracking, crisis intervention, and personalized wellness recommendations",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "keywords": ["mental-health", "ai", "mood-tracking", "wellness", "pwa", "react"],
+  "author": "MindCare AI Team",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -50,7 +54,7 @@
     "embla-carousel-react": "^8.6.0",
     "html2pdf.js": "^0.12.1",
     "input-otp": "^1.4.2",
-    "lovable-tagger": "^1.1.11",
+
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",

@@ -8,7 +8,7 @@
 - [ ] Enable leaked password protection: Supabase Dashboard → Authentication → Providers → Email → Enable "Leaked Password Protection"
 - [ ] Set Site URL: Supabase Dashboard → Authentication → URL Configuration → Site URL
 - [ ] Set Redirect URLs: Add your production domain to Authorized Redirect URLs
-- [ ] Verify all edge functions are deployed (they deploy automatically with Lovable)
+- [ ] Deploy all edge functions to Supabase
 
 **Legal & Compliance** (REQUIRED for HIPAA):
 - [ ] Create Privacy Policy
@@ -18,28 +18,32 @@
 
 ---
 
-## 2. Lovable Deployment
+## 2. Application Deployment
 
-MindCare AI can be deployed directly from Lovable:
+MindCare AI can be deployed to various platforms:
 
-1. Click the **Publish** button in the top right of the Lovable editor
-2. Your app will be deployed to a Lovable subdomain: `your-project.lovable.app`
-3. For custom domains, go to Project → Settings → Domains
+### Vercel Deployment
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables
+3. Deploy with automatic builds on push
+
+### Netlify Deployment
+1. Connect repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `dist`
 
 ---
 
 ## 3. Environment Configuration
 
-### Supabase Secrets (Already Configured)
-The following secrets are pre-configured in your Supabase project:
-- `SUPABASE_URL`
-- `SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `LOVABLE_API_KEY`
-- `SUPABASE_DB_URL`
-- `SUPABASE_PUBLISHABLE_KEY`
+### Environment Variables
+Configure the following environment variables in your deployment platform:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY` (for edge functions)
+- `GOOGLE_AI_API_KEY` (for AI features)
 
-**No additional configuration needed** - edge functions automatically have access to these secrets.
+**Note**: Edge functions need access to these secrets through Supabase's secret management.
 
 ---
 
@@ -86,8 +90,8 @@ Already enabled with:
    - Example: `https://your-app.lovable.app` or `https://yourdomain.com`
 
 2. **Redirect URLs**: Add all deployment URLs
-   - Development: `http://localhost:8080`
-   - Staging: `https://your-project.lovable.app`
+   - Development: `http://localhost:5173`
+   - Staging: `https://your-staging-domain.com`
    - Production: `https://yourdomain.com`
 
 3. **Email Templates**: Customize in Supabase Dashboard → Authentication → Email Templates
@@ -151,25 +155,26 @@ Monitor edge function performance:
 - Monitor storage usage
 - Review slow queries
 
-### Lovable AI Usage
+### AI Service Usage
 Monitor AI request usage:
-- Lovable Dashboard → Settings → Usage
-- Track costs and rate limits
-- Optimize prompts if needed
+- Google AI Studio → Usage Dashboard
+- Track API quotas and rate limits
+- Optimize prompts for efficiency
 
 ---
 
 ## 10. Custom Domain Setup
 
-### Using Lovable Custom Domains
-1. Navigate to Project → Settings → Domains
+### Using Vercel Custom Domains
+1. Navigate to Project Settings → Domains
 2. Add your custom domain
 3. Configure DNS records as instructed
 4. Update Supabase authentication URLs to use custom domain
 
 ### DNS Configuration
-Point your domain to Lovable:
-- CNAME record: `your-domain.com` → `your-project.lovable.app`
+Point your domain to your hosting provider:
+- For Vercel: Follow their DNS configuration guide
+- For Netlify: Configure DNS through their dashboard
 - Wait for DNS propagation (can take up to 48 hours)
 
 ### Update Authentication URLs
@@ -236,9 +241,9 @@ After custom domain is active:
 If deployment issues occur:
 
 1. **Immediate Rollback**:
-   - Lovable maintains version history
-   - Click project name → Settings → History
-   - Revert to previous working version
+   - Use Git version control to revert changes
+   - Redeploy previous working commit
+   - Most hosting platforms support instant rollbacks
 
 2. **Database Rollback**:
    - Supabase maintains daily backups
@@ -254,38 +259,37 @@ If deployment issues occur:
 ## 14. Support & Resources
 
 ### Documentation
-- [Lovable Documentation](https://docs.lovable.dev/)
 - [Supabase Documentation](https://supabase.com/docs)
+- [Vite Documentation](https://vitejs.dev/)
 - [PWA Documentation](https://web.dev/progressive-web-apps/)
 
 ### Support Channels
-- Lovable Support: support@lovable.dev
 - Supabase Support: https://supabase.com/support
-- Community: Lovable Discord, Supabase Discord
+- Community: Supabase Discord
 
 ### Emergency Contacts
 For production emergencies:
 1. Check Supabase status page
-2. Review Lovable status page
+2. Review hosting provider status page
 3. Contact support channels above
 
 ---
 
 ## 15. Cost Considerations
 
-### Lovable Pricing
-- Check current plan limits in Lovable dashboard
-- Monitor project usage
-- Plan for scaling needs
+### Hosting Costs
+- Vercel: Free tier available, pay for usage
+- Netlify: Free tier with build minutes
+- Monitor bandwidth and build usage
 
 ### Supabase Costs
 - Free tier: Limited resources
 - Pro tier: Recommended for production
 - Monitor usage: Database, Edge Functions, Storage, Bandwidth
 
-### Lovable AI Costs
-- Usage-based pricing
-- Free tier included
+### AI Service Costs
+- Google AI: Usage-based pricing
+- Free tier with quotas
 - Monitor request volume
 - Optimize AI prompts for efficiency
 
